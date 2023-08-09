@@ -5,7 +5,7 @@ import Header from '@/app/components/Header';
 import Image from 'next/image';
 
 
-function signin() {
+function SignIn() {
   const [providers, setProviders] = useState({});
   useEffect(async () => {
     const providers = await getProviders();
