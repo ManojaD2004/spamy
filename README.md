@@ -2,6 +2,14 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
+fakerjs
+tailwindcss scrollbar
+next-auth
+firebase
+next-router-mock
+react-moment
+headlessui 
+
 First, run the development server:
 
 ```bash
