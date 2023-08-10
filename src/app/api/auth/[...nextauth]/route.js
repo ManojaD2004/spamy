@@ -9,7 +9,7 @@ export const authOptions = {
     }),
     // ...add more providers here
   ],
-  secert: process.env.NEXT_PUBLIC_SECRET,
+  secret: process.env.SECRET,
   pages: {
     signIn: '/auth/signin',
   },
