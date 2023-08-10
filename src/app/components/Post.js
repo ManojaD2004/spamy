@@ -17,7 +17,6 @@ function Post({ id, username, userImg, img, caption }) {
   const session = useSession();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
-  console.log(session);
 
   useEffect(() => {
     return onSnapshot(query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')), 
@@ -78,8 +77,9 @@ function Post({ id, username, userImg, img, caption }) {
                             {" "}{comment.data().comment}
                         </p>
                         <Moment className='pr-5 text-xs' 
-                        fromNow={comment.data().timestamp}>
+                        fromNow>{comment.data().timestamp.toDate()}
                         </Moment>
+                        {console.log(comment.data().timestamp.toDate())}
                     </div>
                 ))}
             </div>
