@@ -34,7 +34,7 @@ function Header() {
             </div>
 
             {/* Middle */}
-            <div className='max-w-xs'>
+            <div className='max-w-xs mr-4'>
                 <div className=' relative mt-1 p-3  rounded-md'>
                     <div className=' absolute inset-y-0 pl-3 flex items-center 
                     pointer-events-none'>
@@ -48,7 +48,7 @@ function Header() {
             <div className='flex items-center justify-end space-x-4'>
                 <HomeIcon onClick={() => router.push('/')} className='navBut' />
                 <MenuIcon className='white h-10 md:hidden
-                 cursor-pointer' />
+                 cursor-pointer flex-shrink-0' />
             
             {sessions.data ? (
                 <>
@@ -58,7 +58,7 @@ function Header() {
                    flex items-center justify-center animate-pulse'>
                        3</div>
                 </div>
-               <PlusCircleIcon onClick={() => setOpen(true)} className='navBut inline-block sm:h-9' />
+               <PlusCircleIcon onClick={() => setOpen(true)} className='navBut inline-block h-10 flex-shrink-0' />
                <UserGroupIcon className='navBut' />
                <HeartIcon className='navBut' />
                <img onClick={signOut} src={sessions?.data?.user?.image} width={40} height={40}
