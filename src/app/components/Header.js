@@ -58,7 +58,7 @@ function Header() {
                    flex items-center justify-center animate-pulse'>
                        3</div>
                 </div>
-               <PlusCircleIcon onClick={() => setOpen(true)} className='navBut' />
+               <PlusCircleIcon onClick={() => setOpen(true)} className='navBut inline-block sm:h-9' />
                <UserGroupIcon className='navBut' />
                <HeartIcon className='navBut' />
                <img onClick={signOut} src={sessions?.data?.user?.image} width={40} height={40}
