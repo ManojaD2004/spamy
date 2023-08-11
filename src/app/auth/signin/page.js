@@ -31,7 +31,7 @@ function SignIn() {
         <p className='font-xs italic'>
           Warning: This is not a real app, this is only for educational 
           purpose! <br/>
-          Tech Used: React, NextJs, TailwindCSS, Firebase DB, FakerJS, Recoil <br />
+          Tech Used: React, NextJs, Next-Auth, TailwindCSS, Firebase DB, FakerJS, Recoil <br />
           Project Credits: Manoja D
         </p>
       <div className=''>

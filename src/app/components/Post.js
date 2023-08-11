@@ -77,9 +77,9 @@ function Post({ id, username, userImg, img, caption }) {
                             {" "}{comment.data().comment}
                         </p>
                         <Moment className='pr-5 text-xs' 
-                        fromNow>{comment.data().timestamp.toDate()}
+                        fromNow>{comment.data().timestamp ? comment.data().timestamp.toDate() : 'a few seconds ago'}
                         </Moment>
-                        {console.log(comment.data().timestamp.toDate())}
+                        {console.log(comment.data().timestamp && comment.data().timestamp.toDate())}
                     </div>
                 ))}
             </div>
