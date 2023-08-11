@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { createRandomUser, userNumbers } from '../ExternalLibs/fakerjs';
+import { createRandomUser } from '../ExternalLibs/fakerjs';
 import Story from './Story';
 import { useSession } from 'next-auth/react';
 

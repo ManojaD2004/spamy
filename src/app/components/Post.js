@@ -1,3 +1,4 @@
+'use client';
 import React, { useEffect, useState } from 'react'
 import { 
     BookmarkIcon,
@@ -77,9 +78,8 @@ function Post({ id, username, userImg, img, caption }) {
                             {" "}{comment.data().comment}
                         </p>
                         <Moment className='pr-5 text-xs' 
-                        fromNow>{comment.data().timestamp ? comment.data().timestamp.toDate() : 'a few seconds ago'}
+                        fromNow>{comment.data().timestamp ? comment.data().timestamp.toDate() : Date.now()}
                         </Moment>
-                        {console.log(comment.data().timestamp && comment.data().timestamp.toDate())}
                     </div>
                 ))}
             </div>
