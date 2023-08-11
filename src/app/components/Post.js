@@ -41,7 +41,11 @@ function Post({ id, username, userImg, img, caption, email }) {
 
  async function deletPost() {
     const docRef = doc(db, 'posts', id);
-    const imageRef = ref(storage, `posts/${id}/image`)
+    const imageRef = ref(storage, `posts/${id}/image`);
+    comments.map(async (comment) => {
+        const commentRef = doc(db, 'posts', id, 'comments', comment.id);
+        await deleteDoc(commentRef);
+    })
     await deleteDoc(docRef);
     await deleteObject(imageRef);
   }
