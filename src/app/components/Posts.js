@@ -14,7 +14,7 @@ export default function Posts() {
   return (
     <div>
         {posts.map(post => (
-            <Post id={post.id} key={post.id} 
+            <Post id={post.id} key={post.id} email={post.data().useremail}
             username={post.data().username} userImg={post.data().profileimg} 
             img={post.data().image} caption={post.data().caption} />
         ))}

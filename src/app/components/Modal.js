@@ -31,6 +31,7 @@ const UploadPost = async () => {
     const docRef = await addDoc(
         collection(db, 'posts'), {
             username: sessions.data.user.name,
+            useremail: sessions.data.user.email,
             caption: captionRef.current.value,
             profileimg: sessions.data.user.image,
             timestamp: serverTimestamp(),

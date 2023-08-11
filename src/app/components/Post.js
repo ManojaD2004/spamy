@@ -10,14 +10,16 @@ import {
  } from '@heroicons/react/outline';
 import { HeartIcon as HeartIconSolid } from '@heroicons/react/solid';
 import { useSession } from 'next-auth/react';
-import { addDoc, collection, onSnapshot, orderBy, query, serverTimestamp } from 'firebase/firestore';
-import { db } from '../firebase/firebase';
-import Moment from 'react-moment';
+import { addDoc, collection, deleteDoc, doc, getDoc, onSnapshot, orderBy, query, serverTimestamp, updateDoc } from 'firebase/firestore';
+import { db, storage } from '../firebase/firebase';
+import { deleteObject, ref } from 'firebase/storage';
+import Comment from './Comment';
 
-function Post({ id, username, userImg, img, caption }) {
+function Post({ id, username, userImg, img, caption, email }) {
   const session = useSession();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState('');
+  const [showPopUp, setShowPopUp] = useState(false); 
 
   useEffect(() => {
     return onSnapshot(query(collection(db, 'posts', id, 'comments'), orderBy('timestamp', 'desc')), 
@@ -32,19 +34,35 @@ function Post({ id, username, userImg, img, caption }) {
         comment: commentToSend,
         username: session.data.user.name,
         userimage: session.data.user.image,
+        useremail: session.data.user.email,
         timestamp: serverTimestamp(),
     })
   };
 
+ async function deletPost() {
+    const docRef = doc(db, 'posts', id);
+    const imageRef = ref(storage, `posts/${id}/image`)
+    await deleteDoc(docRef);
+    await deleteObject(imageRef);
+  }
+
   return (
     <div className='bg-black my-7 border border-gray-700 rounded-sm'>
         {/* Header */}
-        <div className='flex items-center p-5'>
+        <div onClick={() => setShowPopUp(false)} className='flex items-center p-5 relative'>
             <img className='rounded-full h-12 w-12 object-contain border 
             p-1 mr-3 cursor-pointer'
              src={userImg} alt={username}/>
             <p className='flex-1 font-bold'>{username}</p>
-            <DotsHorizontalIcon className='h-5' />
+            <DotsHorizontalIcon onClick={(e) => {
+                e.stopPropagation();
+                if (session.data && session.data.user.email === email)
+                {setShowPopUp(!showPopUp);}}} className='h-5' />
+            {showPopUp && (<div onClick={deletPost} className='animate-[bounce_0.6s_ease-in-out_1_forwards] absolute right-8 bg-white text-black
+            font-bold py-1 px-3 rounded-md top-10 cursor-pointer
+             hover:bg-gray-200 ease-in-out duration-300 transition-colors'>
+                Delete Post
+            </div>)}
         </div>
         {/* Img */}
         <img src={img} className='object-cover w-full' />
@@ -70,17 +88,8 @@ function Post({ id, username, userImg, img, caption }) {
             <div className='ml-10 h-20 overflow-y-scroll scrollbar-thumb-slate-200
             scrollbar-thin'>
                 {comments.map(comment => (
-                    <div key={comment.id} className='flex items-center 
-                    space-x-2 mb-3'>
-                        <img className='h-7 rounded-full' src={comment.data().userimage} alt='' />
-                        <p className='test-sm flex-1'>
-                            <span className='font-bold'>{comment.data().username}</span>
-                            {" "}{comment.data().comment}
-                        </p>
-                        <Moment className='pr-5 text-xs' 
-                        fromNow>{comment.data().timestamp ? comment.data().timestamp.toDate() : Date.now()}
-                        </Moment>
-                    </div>
+                    <Comment key={comment.id} parentId={id}
+                    comment={comment} />
                 ))}
             </div>
         )}
