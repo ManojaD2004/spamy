@@ -1,11 +1,10 @@
-'use client';
-import { RecoilRoot } from 'recoil'
-import Providers from './components/Providers'
-import './globals.css'
-import { Inter } from 'next/font/google'
+"use client";
+import { RecoilRoot } from "recoil";
+import Providers from "./components/Providers";
+import "./globals.css";
+import { Inter } from "next/font/google";
 
-
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({ children }) {
   return (
@@ -15,11 +14,9 @@ export default function RootLayout({ children }) {
       </head>
       <body className={inter.className}>
         <Providers>
-          <RecoilRoot>
-          {children}
-          </RecoilRoot>
-        </Providers> 
+          <RecoilRoot>{children}</RecoilRoot>
+        </Providers>
       </body>
     </html>
-  )
+  );
 }
