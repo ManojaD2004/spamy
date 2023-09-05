@@ -3,20 +3,21 @@ import Post from "./Post";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../firebase/firebase";
 
-export default function Posts() {
+export default function Posts({ choice }) {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     return onSnapshot(
-      query(collection(db, "posts"), orderBy("timestamp", "desc")),
+      query(collection(db, `${choice}`), orderBy("timestamp", "desc")),
       (snapshot) => setPosts(snapshot.docs)
     );
-  }, []);
+  }, [choice]);
 
   return (
     <div>
       {posts.map((post) => (
         <Post
+          choice={choice}
           id={post.id}
           key={post.id}
           email={post.data().useremail}

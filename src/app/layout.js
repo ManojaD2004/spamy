@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
-        <title>Instagram 2.0 Build</title>
+        <title>Spamy App</title>
       </head>
       <body className={inter.className}>
         <Providers>

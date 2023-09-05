@@ -14,7 +14,7 @@ export default function Home() {
     >
       <Header setChoice={setChoice} choice={choice} />
       <Feed choice={choice} />
-      <Modal />
+      <Modal choice={choice} />
     </main>
   );
 }

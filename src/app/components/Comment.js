@@ -5,11 +5,11 @@ import React, { useState } from 'react'
 import Moment from 'react-moment'
 import { db } from '../firebase/firebase';
 
-function Comment({ parentId, comment }) {
+function Comment({ parentId, comment, choice }) {
   const sessions = useSession();
   const [showPopUp, setShowPopUp] = useState(false);
   async function deletComment() {
-    const docRef = doc(db, 'posts', parentId, 'comments', 
+    const docRef = doc(db, `${choice}`, parentId, 'comments', 
     comment.id);
     await deleteDoc(docRef);
   }

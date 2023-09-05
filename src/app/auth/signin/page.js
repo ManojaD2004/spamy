@@ -31,15 +31,12 @@ function SignIn() {
         <Image
           width={320}
           height={320}
-          src="/Images/Logo-Instagram.png"
-          className="invert"
+          src="/Images/Logo.png"
+          alt=""
         />
         <p className="font-xs italic">
-          Warning: This is not a real app, this is only for educational purpose!{" "}
-          <br />
-          Tech Used: React, NextJs, Next-Auth, TailwindCSS, Firebase DB,
-          FakerJS, Recoil <br />
-          Project Credits: Manoja D
+          
+          Project Credits: Coding Club - Dark Mode
         </p>
         <div className="">
           {Object.values(providers).map((provider) => (

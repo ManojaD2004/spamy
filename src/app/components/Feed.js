@@ -20,7 +20,7 @@ function Feed({ choice }) {
         {/* Stories */}
         {/* <Stories /> */}
         {/* Posts */}
-        <Posts />
+        <Posts choice={choice} />
       </section>
       {session.data && (
         <section className="hidden xl:inline-grid">

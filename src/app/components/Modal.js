@@ -15,7 +15,7 @@ import { db, storage } from "../firebase/firebase";
 import { useSession } from "next-auth/react";
 import { getDownloadURL, ref, uploadString } from "firebase/storage";
 
-function Modal() {
+function Modal({ choice }) {
   const sessions = useSession();
   const [open, setOpen] = useRecoilState(modalState);
   const filePickerRef = useRef(null);
@@ -34,7 +34,7 @@ function Modal() {
     // 4) get a download url from firebase storage, and
     // update the orginal post with that.
 
-    const docRef = await addDoc(collection(db, "posts"), {
+    const docRef = await addDoc(collection(db, `${choice}`), {
       username: sessions.data.user.name,
       useremail: sessions.data.user.email,
       caption: captionRef.current.value,
@@ -48,7 +48,7 @@ function Modal() {
     await uploadString(imageRef, selectedFile, "data_url").then(
       async (snapshot) => {
         const downloadUrl = await getDownloadURL(imageRef);
-        await updateDoc(doc(db, "posts", docRef.id), {
+        await updateDoc(doc(db, `${choice}`, docRef.id), {
           image: downloadUrl,
         });
       }

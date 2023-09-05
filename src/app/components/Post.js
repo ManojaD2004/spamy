@@ -26,7 +26,7 @@ import { db, storage } from "../firebase/firebase";
 import { deleteObject, ref } from "firebase/storage";
 import Comment from "./Comment";
 
-function Post({ id, username, userImg, img, caption, email }) {
+function Post({ id, username, userImg, img, caption, email, choice }) {
   const session = useSession();
   const [comments, setComments] = useState([]);
   const [comment, setComment] = useState("");
@@ -35,7 +35,7 @@ function Post({ id, username, userImg, img, caption, email }) {
   useEffect(() => {
     return onSnapshot(
       query(
-        collection(db, "posts", id, "comments"),
+        collection(db, `${choice}`, id, "comments"),
         orderBy("timestamp", "desc")
       ),
       (snapshot) => setComments(snapshot.docs)
@@ -46,7 +46,7 @@ function Post({ id, username, userImg, img, caption, email }) {
     e.preventDefault();
     const commentToSend = comment;
     setComment("");
-    await addDoc(collection(db, "posts", id, "comments"), {
+    await addDoc(collection(db, `${choice}`, id, "comments"), {
       comment: commentToSend,
       username: session.data.user.name,
       userimage: session.data.user.image,
@@ -56,10 +56,10 @@ function Post({ id, username, userImg, img, caption, email }) {
   };
 
   async function deletPost() {
-    const docRef = doc(db, "posts", id);
+    const docRef = doc(db, `${choice}`, id);
     const imageRef = ref(storage, `posts/${id}/image`);
     comments.map(async (comment) => {
-      const commentRef = doc(db, "posts", id, "comments", comment.id);
+      const commentRef = doc(db, `${choice}`, id, "comments", comment.id);
       await deleteDoc(commentRef);
     });
     await deleteDoc(docRef);
@@ -106,11 +106,11 @@ function Post({ id, username, userImg, img, caption, email }) {
       {session.data && (
         <div className="flex justify-between px-4 pt-4">
           <div className="flex space-x-4">
-            <HeartIcon className="postBut" />
+            {/* <HeartIcon className="postBut" /> */}
             <ChatIcon className="postBut" />
-            <PaperAirplaneIcon className="postBut rotate-90" />
+            {/* <PaperAirplaneIcon className="postBut rotate-90" /> */}
           </div>
-          <BookmarkIcon className="postBut" />
+          {/* <BookmarkIcon className="postBut" /> */}
         </div>
       )}
       {/* Captions */}
@@ -126,7 +126,7 @@ function Post({ id, username, userImg, img, caption, email }) {
             scrollbar-thin"
         >
           {comments.map((comment) => (
-            <Comment key={comment.id} parentId={id} comment={comment} />
+            <Comment key={comment.id} parentId={id} choice={choice} comment={comment} />
           ))}
         </div>
       )}

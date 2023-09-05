@@ -20,32 +20,34 @@ function Header({ setChoice, choice }) {
   const router = useRouter();
   const [open, setOpen] = useRecoilState(modalState);
   return (
-    <div className="shadow-sm bg-black shadow-white border-b sticky top-0 z-50">
+    <div className="shadow-sm bg-black py-3 md:py-0 shadow-white border-b sticky top-0 z-50">
       <div className="flex justify-between max-w-6xl lg:mx-auto">
         {/* Left */}
         <div
           onClick={() => null}
-          className="relative hidden lg:inline-grid w-24 invert cursor-pointer"
+          className="relative hidden lg:inline-grid w-24 cursor-pointer"
         >
           <Image
+            src="/images/logo.png"
             layout="fill"
             objectFit="contain"
-            src="/Images/Logo-Instagram.png"
+            alt=""
           />
         </div>
         <div
-          onClick={() => router.push("/")}
-          className="relative lg:hidden w-10 invert flex-shrink-0 cursor-pointer"
+          onClick={() => null}
+          className="relative lg:hidden w-10 flex-shrink-0 cursor-pointer"
         >
           <Image
-            src="https://cdn-icons-png.flaticon.com/512/87/87390.png"
+            src="/images/logo.png"
             layout="fill"
             objectFit="contain"
+            alt=""
           />
         </div>
 
         {/* Middle */}
-        <div className="max-w-xs mr-4">
+        <div className="max-w-xs mr-4 hidden md:block">
           <div className=" relative mt-1 p-3  rounded-md">
             <div
               className=" absolute inset-y-0 pl-3 flex items-center 
@@ -64,10 +66,10 @@ function Header({ setChoice, choice }) {
 
         <div className="flex items-center justify-end space-x-4">
           <HomeIcon onClick={() => null} className="navBut" />
-          <MenuIcon
+          {/* <MenuIcon
             className="white h-10 md:hidden
                  cursor-pointer flex-shrink-0"
-          />
+          /> */}
 
           {sessions.data ? (
             <>
@@ -85,7 +87,7 @@ function Header({ setChoice, choice }) {
                 className="navBut inline-block flex-shrink-0"
               />
               <form>
-                <label for="room" className="pr-3">
+                <label for="room" className="md:pr-3 pr-2">
                   Room:{" "}
                 </label>
                 <select
