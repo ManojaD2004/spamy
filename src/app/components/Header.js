@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
 import {
   SearchIcon,
   PlusCircleIcon,
@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import { useRecoilState } from "recoil";
 import { modalState } from "../atoms/modalAtom";
 
-function Header() {
+function Header({ setChoice, choice }) {
   const sessions = useSession();
   const router = useRouter();
   const [open, setOpen] = useRecoilState(modalState);
@@ -24,7 +24,7 @@ function Header() {
       <div className="flex justify-between max-w-6xl lg:mx-auto">
         {/* Left */}
         <div
-          onClick={() => router.push("/")}
+          onClick={() => null}
           className="relative hidden lg:inline-grid w-24 invert cursor-pointer"
         >
           <Image
@@ -63,7 +63,7 @@ function Header() {
         </div>
 
         <div className="flex items-center justify-end space-x-4">
-          <HomeIcon onClick={() => router.push("/")} className="navBut" />
+          <HomeIcon onClick={() => null} className="navBut" />
           <MenuIcon
             className="white h-10 md:hidden
                  cursor-pointer flex-shrink-0"
@@ -71,7 +71,7 @@ function Header() {
 
           {sessions.data ? (
             <>
-              <div className=" relative navBut">
+              {/* <div className=" relative navBut">
                 <PaperAirplaneIcon className="navBut rotate-45" />
                 <div
                   className="absolute bg-red-500 -top-1 -right-2 h-5 w-5 rounded-full
@@ -79,13 +79,30 @@ function Header() {
                 >
                   3
                 </div>
-              </div>
+              </div> */}
               <PlusCircleIcon
                 onClick={() => setOpen(true)}
-                className="navBut inline-block h-10 flex-shrink-0"
+                className="navBut inline-block flex-shrink-0"
               />
-              <UserGroupIcon className="navBut" />
-              <HeartIcon className="navBut" />
+              <form>
+                <label for="room" className="pr-3">
+                  Room:{" "}
+                </label>
+                <select
+                  name="room"
+                  id="room"
+                  value={choice}
+                  onChange={(e) => setChoice(e.target.value)}
+                  className="bg-black"
+                >
+                  <option value="world">World</option>
+                  <option value="art">Art</option>
+                  <option value="sports">Sports</option>
+                  <option value="games">Games</option>
+                </select>
+              </form>
+              {/* <UserGroupIcon className="navBut" /> */}
+              {/* <HeartIcon className="navBut" /> */}
               <img
                 onClick={signOut}
                 src={sessions?.data?.user?.image}

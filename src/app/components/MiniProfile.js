@@ -16,7 +16,7 @@ function MiniProfile() {
             ? session.data.user.name.split(" ").join("").toLocaleLowerCase()
             : "YourName"}
         </h2>
-        <h3 className="text-gray-400 text-sm">Welcome to Instagram</h3>
+        <h3 className="text-gray-400 text-sm">Welcome to Spamy</h3>
       </div>
       <button onClick={signOut} className="text-blue-400 text-sm font-semibold">
         Sign Out

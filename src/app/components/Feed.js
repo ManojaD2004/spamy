@@ -6,8 +6,9 @@ import MiniProfile from "./MiniProfile";
 import Suggestions from "./Suggestions";
 import { useSession } from "next-auth/react";
 
-function Feed() {
+function Feed({ choice }) {
   const session = useSession();
+  console.log(choice);
   // get user data: uncomment this
   // console.log(session);
   return (
@@ -17,7 +18,7 @@ function Feed() {
     >
       <section className="col-span-2 ">
         {/* Stories */}
-        <Stories />
+        {/* <Stories /> */}
         {/* Posts */}
         <Posts />
       </section>
@@ -27,7 +28,7 @@ function Feed() {
             {/* Mini Profile */}
             <MiniProfile />
             {/* Suggestions */}
-            <Suggestions />
+            {/* <Suggestions /> */}
           </div>
         </section>
       )}
