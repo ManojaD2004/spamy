@@ -36,7 +36,7 @@ function SignIn() {
         />
         <p className="font-xs italic">
           
-          Project Credits: Coding Club - Dark Mode
+          {/* Project Credits: Coding Club - Dark Mode */}
         </p>
         <div className="">
           {Object.values(providers).map((provider) => (
