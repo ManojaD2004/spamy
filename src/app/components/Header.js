@@ -27,8 +27,8 @@ function Header({ setChoice, choice }) {
           onClick={() => null}
           className="relative hidden lg:inline-grid w-24 cursor-pointer"
         >
-          <Image
-            src="/images/logo.png"
+          <img
+            src="https://firebasestorage.googleapis.com/v0/b/insta-2-build.appspot.com/o/Logo%2Flogo.png?alt=media&token=8563de1d-3b36-4c48-bee2-548c0e9f3e9d"
             layout="fill"
             objectFit="contain"
             alt=""
