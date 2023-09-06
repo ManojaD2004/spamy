@@ -31,7 +31,7 @@ function SignIn() {
         <img
           width={320}
           height={320}
-          src="/static/images/logo.png"
+          src="https://drive.google.com/file/d/1URi-VZniNPuFF_5j33MMxJqLhiHEcQY0/view"
           alt=""
         />
         <p className="font-xs italic">

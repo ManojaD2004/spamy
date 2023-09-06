@@ -39,7 +39,7 @@ function Header({ setChoice, choice }) {
           className="relative lg:hidden w-10 flex-shrink-0 cursor-pointer"
         >
           <img
-            src="/static/images/logo.png"
+            src="https://drive.google.com/file/d/1URi-VZniNPuFF_5j33MMxJqLhiHEcQY0/view"
             layout="fill"
             objectFit="contain"
             alt=""
