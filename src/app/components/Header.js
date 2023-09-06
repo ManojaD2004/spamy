@@ -38,7 +38,7 @@ function Header({ setChoice, choice }) {
           onClick={() => null}
           className="relative lg:hidden w-10 flex-shrink-0 cursor-pointer"
         >
-          <Image
+          <img
             src="/static/images/logo.png"
             layout="fill"
             objectFit="contain"

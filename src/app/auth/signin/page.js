@@ -28,7 +28,7 @@ function SignIn() {
         className="flex items-center justify-evenly flex-col min-h-[85vh]
       py-2 px-14 text-center"
       >
-        <Image
+        <img
           width={320}
           height={320}
           src="/static/images/logo.png"
