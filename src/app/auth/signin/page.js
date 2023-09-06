@@ -31,7 +31,7 @@ function SignIn() {
         <Image
           width={320}
           height={320}
-          src="/Images/Logo.png"
+          src="/static/images/logo.png"
           alt=""
         />
         <p className="font-xs italic">

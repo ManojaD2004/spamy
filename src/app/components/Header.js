@@ -39,7 +39,7 @@ function Header({ setChoice, choice }) {
           className="relative lg:hidden w-10 flex-shrink-0 cursor-pointer"
         >
           <Image
-            src="/images/logo.png"
+            src="/static/images/logo.png"
             layout="fill"
             objectFit="contain"
             alt=""
@@ -114,7 +114,26 @@ function Header({ setChoice, choice }) {
               />
             </>
           ) : (
-            <button onClick={signIn}>SignIn</button>
+            <>
+              <form>
+                <label for="room" className="md:pr-3 pr-2">
+                  Room:{" "}
+                </label>
+                <select
+                  name="room"
+                  id="room"
+                  value={choice}
+                  onChange={(e) => setChoice(e.target.value)}
+                  className="bg-black"
+                >
+                  <option value="world">World</option>
+                  <option value="art">Art</option>
+                  <option value="sports">Sports</option>
+                  <option value="games">Games</option>
+                </select>
+              </form>
+              <button onClick={signIn}>SignIn</button>
+            </>
           )}
         </div>
 
