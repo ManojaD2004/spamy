@@ -31,7 +31,7 @@ function SignIn() {
         <img
           width={320}
           height={320}
-          src="https://drive.google.com/file/d/1URi-VZniNPuFF_5j33MMxJqLhiHEcQY0/view"
+          src="https://firebasestorage.googleapis.com/v0/b/insta-2-build.appspot.com/o/Logo%2Flogo.png?alt=media&token=8563de1d-3b36-4c48-bee2-548c0e9f3e9d"
           alt=""
         />
         <p className="font-xs italic">

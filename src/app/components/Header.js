@@ -39,7 +39,7 @@ function Header({ setChoice, choice }) {
           className="relative lg:hidden w-10 flex-shrink-0 cursor-pointer"
         >
           <img
-            src="https://drive.google.com/file/d/1URi-VZniNPuFF_5j33MMxJqLhiHEcQY0/view"
+            src="https://firebasestorage.googleapis.com/v0/b/insta-2-build.appspot.com/o/Logo%2Flogo.png?alt=media&token=8563de1d-3b36-4c48-bee2-548c0e9f3e9d"
             layout="fill"
             objectFit="contain"
             alt=""
